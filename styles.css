@@ -24,7 +24,9 @@ header {
 nav ul {
     list-style: none;
 }
-
+nav {
+    margin-top: 10px;
+}
 nav li {
     display: inline-block;
     margin-right: 20px;
@@ -32,9 +34,23 @@ nav li {
 
 nav a {
     text-decoration: none;
-    color: #fff;
+    color: #056272;
+}
+nav button {
+    
+    background-color: rgba(0, 0, 0, 0.123); /* Green background */
+    color: #fff; /* Text color (white) */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border: 2px solid rgb(211, 224, 248);
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer; /* Show pointer cursor on hover */
+    font-size: large;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
+nav button:hover {
+    background-color: #00000056; /* Darker green on hover */
+}
 /* Style the main content section */
 main {
     padding: 20px;

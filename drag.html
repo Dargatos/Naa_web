@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable Element with Smooth Snap Back</title>
+    <style>
+        #myElement {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            position: absolute;
+            transition: transform 0.3s ease; /* Add smooth transition */
+        }
+    </style>
+</head>
+<body>
+    <div id="myElement"></div>
+
+    <script>
+        const element = document.getElementById('myElement');
+        let isDragging = false;
+        let offsetX, offsetY;
+        let originalX, originalY;
+
+        element.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            offsetX = e.clientX - element.getBoundingClientRect().left;
+            offsetY = e.clientY - element.getBoundingClientRect().top;
+            originalX = parseFloat(element.style.left) || 0; // Get the current left position
+            originalY = parseFloat(element.style.top) || 0; // Get the current top position
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                element.style.left = e.clientX - offsetX + 'px';
+                element.style.top = e.clientY - offsetY + 'px';
+            }
+        });
+
+        document.addEventListener('mouseup', (e) => {
+    if (isDragging) {
+        // Calculate the distance from the original position
+        const deltaX = e.clientX - offsetX - originalX;
+        const deltaY = e.clientY - offsetY - originalY;
+
+        // Snap back to the original position
+        element.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+        isDragging = false;
+    }
+});
+
+    </script>
+</body>
+</html>

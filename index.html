@@ -3,22 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Awesome Website</title>
+    <title>Naa Website</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        let lever
+        let lever_fade
+        let lever_slide
+
+        
+
+        function openPopup(){
+            const section = document.getElementById('B');
+
+            if (lever) {
+                section.style.display = 'block';
+
+                lever = false
+            }
+            else
+            {
+                section.style.display = 'none';
+                lever = true
+            }
+            
+        }
+        function fadeOutSection() {
+            if (lever_fade)
+            {
+                const section = document.getElementById('B');
+                section.style.transition = 'opacity 1s';
+                section.style.opacity = '0';
+                lever_fade = false
+            }
+            else
+            {
+                const section = document.getElementById('B');
+                section.style.transition = 'opacity 1s';
+                section.style.opacity = '1';
+                lever_fade = true
+            }
+        }
+        function slideOutSection() {
+            if (lever_slide)
+            {
+                const section = document.getElementById('B');
+                section.style.transition = 'transform 1s';
+                section.style.transform = 'translateX(-100%)'; // Slide out to the left
+                lever_slide = false
+            }
+            else
+            {
+                const section = document.getElementById('B');
+                section.style.transition = 'transform 1s';
+                section.style.transform = 'translateX(0%)'; // Slide out to the left
+                lever_slide = true
+            }
+            
+            
+        }
+        document.addEventListener('keydown', (e) => {
+            // Check if the pressed key is the Enter key (key code 13)
+            
+                // Perform your desired action here
+                console.log('Enter key pressed!');
+                window.location.href = 'drag.html';
+        });
+    </script>
 </head>
 <body>
     <header>
         <h1>Welcome to My Website</h1>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><button onclick="openPopup()" >Home</button></li>
+                <li><button onclick="slideOutSection()" >About</button></li>
+                <li><button onclick="fadeOutSection()" >Me</button></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section>
+        <section id="B">
             <h2>About Me</h2>
             <p>I'm passionate about web development!</p>
         </section>
